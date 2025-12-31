@@ -1,20 +1,25 @@
 <?xml version="1.0"?>
-<!-- A sample job config that explicitly limits resources to match your server env -->
 <job_conf>
     <plugins>
-        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
+        <!-- Define the Docker Runner -->
+        <plugin id="docker" type="runner" load="galaxy.jobs.runners.docker:DockerJobRunner"/>
     </plugins>
     
     <destinations>
-        <destination id="local_destination" runner="local">
-            <!-- Limits to prevents crashing the main server -->
-            <param id="local_slots">4</param> 
-            <param id="local_memory">8G</param>
+        <!-- Use Docker for all jobs -->
+        <destination id="docker_destination" runner="docker">
+            <param id="docker_enabled">true</param>
+            <!-- Important: Pass resource limits to the Docker container -->
+            <param id="docker_memory">8G</param>
+            <param id="docker_cpu">4</param>
+            <param id="docker_sudo">false</param>
+            <param id="docker_auto_rm">true</param>
+            <param id="docker_set_user">1000</param> <!-- Match galaxy user ID -->
         </destination>
     </destinations>
     
     <tools>
-        <tool id="upload1" destination="local_destination" />
+        <tool id="upload1" destination="docker_destination" />
     </tools>
     
     <limits>
