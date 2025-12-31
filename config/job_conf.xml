@@ -1,20 +1,22 @@
 <?xml version="1.0"?>
 <job_conf>
     <plugins>
-        <!-- Define the Docker Runner -->
-        <plugin id="docker" type="runner" load="galaxy.jobs.runners.docker:DockerJobRunner"/>
+        <!-- The image uses LocalJobRunner with Docker enabled via params -->
+        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
     </plugins>
     
     <destinations>
-        <!-- Use Docker for all jobs -->
-        <destination id="docker_destination" runner="docker">
+        <!-- Docker Destination: Uses Local Runner but executes in Docker -->
+        <destination id="docker_destination" runner="local">
             <param id="docker_enabled">true</param>
-            <!-- Important: Pass resource limits to the Docker container -->
-            <param id="docker_memory">8G</param>
-            <param id="docker_cpu">4</param>
             <param id="docker_sudo">false</param>
             <param id="docker_auto_rm">true</param>
-            <param id="docker_set_user">1000</param> <!-- Match galaxy user ID -->
+            
+            <!-- Resource Limits: Passed to the Docker container -->
+            <param id="local_slots">4</param> 
+            <!-- Note: Local runner often respects local_slots/memory, but for docker limits we might need specific params if supported. 
+                 The bgruening image generally respects these for the wrapper. -->
+            <param id="local_memory">8G</param>
         </destination>
     </destinations>
     
