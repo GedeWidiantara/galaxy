@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- A sample job config that explicitly limits resources to match your server env -->
+<job_conf>
+    <plugins>
+        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
+    </plugins>
+    
+    <destinations>
+        <destination id="local_destination" runner="local">
+            <!-- Limits to prevents crashing the main server -->
+            <param id="local_slots">4</param> 
+            <param id="local_memory">8G</param>
+        </destination>
+    </destinations>
+    
+    <tools>
+        <tool id="upload1" destination="local_destination" />
+    </tools>
+    
+    <limits>
+        <limit type="registered_user_concurrent_jobs">4</limit>
+        <limit type="anonymous_concurrent_jobs">1</limit>
+    </limits>
+</job_conf>

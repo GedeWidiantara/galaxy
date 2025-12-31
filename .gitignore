@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Data & Persistence
+data/
+backups/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,16 @@
+api_key: admin
+galaxy_instance: http://localhost:8080
+tools:
+  - name: fastqc
+    owner: devteam
+    tool_panel_section_label: "Quality Control"
+    revisions:
+      - "e7b2202befea" # v0.72+galaxy1
+
+  - name: bwa
+    owner: devteam
+    tool_panel_section_label: "Mapping"
+    
+  - name: samtools_sort
+    owner: devteam
+    tool_panel_section_label: "SAM/BAM"
