@@ -26,7 +26,7 @@
     </tools>
     
     <limits>
-        <limit type="registered_user_concurrent_jobs">4</limit>
-        <limit type="anonymous_concurrent_jobs">1</limit>
+        <limit type="registered_user_concurrent_jobs">8</limit>
+        <limit type="anonymous_concurrent_jobs">2</limit>
     </limits>
 </job_conf>
