@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <job_conf>
+    <handlers assign_with="db-skip-locked"/>
     <plugins>
         <!-- The image uses LocalJobRunner with Docker enabled via params -->
         <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>

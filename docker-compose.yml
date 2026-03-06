@@ -2,6 +2,7 @@ services:
   galaxy:
     image: quay.io/bgruening/galaxy:${GALAXY_TAG}
     container_name: galaxy-prod
+    hostname: galaxy-prod
     privileged: true
     restart: unless-stopped
     
