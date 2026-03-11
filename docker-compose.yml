@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     
     group_add:
-      - "135"
+      - "${DOCKER_GID}"
 
     ports:
       - "${HOST_PORT}:80"

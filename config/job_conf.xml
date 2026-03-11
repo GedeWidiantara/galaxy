@@ -6,13 +6,16 @@
         <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
     </plugins>
     
-    <destinations>
+    <destinations default="docker_destination">
         <!-- Docker Destination: Uses Local Runner but executes in Docker -->
         <destination id="docker_destination" runner="local">
             <param id="docker_enabled">true</param>
             <param id="docker_sudo">false</param>
             <param id="docker_auto_rm">true</param>
             
+            <param id="docker_volumes">$defaults</param>
+            <param id="docker_set_user">$uid</param>
+
             <!-- Resource Limits: Passed to the Docker container -->
             <param id="local_slots">4</param> 
             <!-- Note: Local runner often respects local_slots/memory, but for docker limits we might need specific params if supported. 
