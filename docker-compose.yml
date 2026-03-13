@@ -21,6 +21,8 @@ services:
       - GALAXY_CONFIG_FORCE_BETA_URLS=False
       - ENABLE_TTS_INSTALL=True
       - GALAXY_DOCKER_ENABLED=True   
+      - GALAXY_CONFIG_ENABLE_MULLED_CONTAINERS=True
+      - GALAXY_DOCKER_VOLUMES_FROM=galaxy-prod
       
     volumes:
       - ./data:/export

@@ -10,8 +10,6 @@
         <!-- Docker Destination: Uses Local Runner but executes in Docker -->
         <destination id="docker_destination" runner="local">
             <param id="docker_enabled">true</param>
-            <param id="docker_auto_resolve">true</param>
-            <param id="docker_default_container_id">busybox:latest</param>
             <param id="docker_sudo">false</param>
             <param id="docker_auto_rm">true</param>
             
